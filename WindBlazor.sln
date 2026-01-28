@@ -5,6 +5,11 @@ VisualStudioVersion = 17.14.36908.2 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindBlazor", "WindBlazor.csproj", "{E76876C4-EDFB-4BBA-BF29-1FE9D4E1D93C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindBlazor.Docs", "..\WindBlazor.Docs\WindBlazor.Docs.csproj", "{8CA14DEC-7E36-4163-8192-79C2DEDCC487}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E76876C4-EDFB-4BBA-BF29-1FE9D4E1D93C} = {E76876C4-EDFB-4BBA-BF29-1FE9D4E1D93C}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{E76876C4-EDFB-4BBA-BF29-1FE9D4E1D93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E76876C4-EDFB-4BBA-BF29-1FE9D4E1D93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E76876C4-EDFB-4BBA-BF29-1FE9D4E1D93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CA14DEC-7E36-4163-8192-79C2DEDCC487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CA14DEC-7E36-4163-8192-79C2DEDCC487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CA14DEC-7E36-4163-8192-79C2DEDCC487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CA14DEC-7E36-4163-8192-79C2DEDCC487}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
