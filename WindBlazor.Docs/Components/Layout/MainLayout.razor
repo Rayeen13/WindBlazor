@@ -1,23 +1,22 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+<div class="min-h-screen bg-slate-50 text-slate-900">
+    <header class="border-b border-slate-200 bg-white">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4">
+            <a href="/" class="text-xl font-bold tracking-tight text-slate-900">
+                WindBlazor <span class="text-sky-700">Docs</span>
+            </a>
+            <NavMenu />
         </div>
+    </header>
 
-        <article class="content px-4">
-            @Body
-        </article>
+    <main class="mx-auto max-w-6xl px-5 py-10">
+        @Body
     </main>
 </div>
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
+<div id="blazor-error-ui" role="alert">
+    An unexpected error occurred.
+    <a href="" class="underline">Reload</a>
+    <a class="dismiss" aria-label="Dismiss error">×</a>
 </div>
