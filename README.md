@@ -4,7 +4,7 @@
 
 ### Blazor components, powered by Tailwind CSS v4.
 
-**Free and open source. Built for developers who want ready-to-use components without giving up control of their markup and styling.**
+**Free and open source. Built for developers who want reusable components without giving up control of their markup and styling.**
 
 [**Documentation**](https://rayeen13.github.io/WindBlazor/) · [**Component examples**](https://rayeen13.github.io/WindBlazor/components/button) · [**Getting started**](https://rayeen13.github.io/WindBlazor/getting-started) · [**Report an issue**](https://github.com/Rayeen13/WindBlazor/issues)
 
@@ -35,13 +35,13 @@ WindBlazor is a **Blazor Razor Class Library (RCL)** for building interfaces wit
 
 | Area | Status | Details |
 | --- | --- | --- |
-| **Button** | Working foundation | Child content, \`Class\`, \`Disabled\`, \`Type\`, HTML attributes and Blazor event handlers |
+| **Button** | Working foundation | Child content, `Class`, `Disabled`, `Type`, HTML attributes and Blazor event handlers |
 | **Interactive website** | Preview | Blazor WebAssembly website with Button examples and an introductory tutorial |
 | **Docs playground** | Working foundation | Separate Blazor Web App (Interactive Server) for component development |
 | **Pre-styled component variants / theme API** | Planned | Not part of the current public Button API |
 | **NuGet distribution** | Not published | Reference the library project from source for now |
 
-The current **public Button API uses \`Class\`**, not \`Css\`. Default color, padding, and component variants are **not implemented yet**. The library deliberately does not present unfinished styling as a finished component.
+The current **public Button API uses `Class`**, not `Css`. Default color, padding, and component variants are **not implemented yet**. The library deliberately does not present unfinished styling as a finished component.
 
 ## Quick start
 
@@ -49,61 +49,61 @@ The current **public Button API uses \`Class\`**, not \`Css\`. Default color, pa
 
 You need the **.NET 8 SDK**.
 
-\`\`\`sh
+```sh
 git clone https://github.com/Rayeen13/WindBlazor.git
 cd WindBlazor
 dotnet build WindBlazor.sln
-\`\`\`
+```
 
 Until a NuGet package exists, consume WindBlazor through a project reference:
 
-\`\`\`xml
+```xml
 <ItemGroup>
   <ProjectReference Include="..\WindBlazor\WindBlazor.csproj" />
 </ItemGroup>
-\`\`\`
+```
 
 Adjust the relative path to suit your solution.
 
 ### 2. Import the component namespace
 
-Add to your Blazor application's \`_Imports.razor\`:
+Add to your Blazor application's `_Imports.razor`:
 
-\`\`\`razor
+```razor
 @using WindBlazor.Components.Button
-\`\`\`
+```
 
 ### 3. Configure Tailwind CSS v4
 
-Install or make the **standalone Tailwind CSS v4 CLI** available as \`tailwindcss\`.
+Install or make the **standalone Tailwind CSS v4 CLI** available as `tailwindcss`.
 
-For a consuming Blazor Web App with the same folder layout as \`WindBlazor.Docs\`, create \`wwwroot/css/tailwind.css\`:
+For a consuming Blazor Web App with the same folder layout as `WindBlazor.Docs`, create `wwwroot/css/tailwind.css`:
 
-\`\`\`css
+```css
 @import "tailwindcss" source(none);
 
 /* Relative to this CSS input file. Adjust for your own solution. */
 @source "../../Components";
 @source "../../../WindBlazor/Components";
-\`\`\`
+```
 
 Use explicit input and output paths:
 
-\`\`\`sh
+```sh
 tailwindcss -i ./wwwroot/css/tailwind.css -o ./wwwroot/css/app.css --watch
-\`\`\`
+```
 
-Run this command from your **consuming app's project folder**, and load the generated file in the app's HTML host (for a Blazor Web App, the HTML section of \`Components/App.razor\`):
+Run this command from your **consuming app's project folder**, and load the generated file in the app's HTML host (for a Blazor Web App, the HTML section of `Components/App.razor`):
 
-\`\`\`html
+```html
 <link rel="stylesheet" href="css/app.css" />
-\`\`\`
+```
 
-> Tailwind utility generation is the responsibility of the **consuming app**. The example \`@source\` paths match the checked-in Docs layout; don't copy them unchanged into a different directory structure.
+> Tailwind utility generation is the responsibility of the **consuming app**. The example `@source` paths match the checked-in Docs layout; don't copy them unchanged into a different directory structure.
 
 ### 4. Use your first component
 
-\`\`\`razor
+```razor
 <Button Class="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white hover:bg-sky-500"
         @onclick="Save">
     Save changes
@@ -120,56 +120,56 @@ Run this command from your **consuming app's project folder**, and load the gene
         // Handle the click.
     }
 }
-\`\`\`
+```
 
-The current Button renders a native HTML \`<button>\`. The \`Class\` parameter accepts Tailwind utilities; \`Disabled\` and \`Type\` map to native attributes, and other HTML attributes/events can be forwarded.
+The current Button renders a native HTML `<button>`. The `Class` parameter accepts Tailwind utilities; `Disabled` and `Type` map to native attributes, and other HTML attributes/events can be forwarded.
 
 ## Explore the projects
 
-\`\`\`text
+```text
 WindBlazor/
 ├── WindBlazor/           # Razor Class Library
 ├── WindBlazor.Docs/      # Interactive Server component playground
 ├── WindBlazor.Website/   # Standalone WebAssembly documentation website
 ├── .github/workflows/    # CSS builds, validation, Pages deployment
 └── WindBlazor.sln
-\`\`\`
+```
 
 **Website preview — Blazor WebAssembly**
 
-\`\`\`sh
+```sh
 cd WindBlazor.Website
 ./tailwindcsswatch.sh
-\`\`\`
+```
 
 In another terminal at the repository root:
 
-\`\`\`sh
+```sh
 dotnet run --project WindBlazor.Website/WindBlazor.Website.csproj
-\`\`\`
+```
 
 Or set **WindBlazor.Website** as the startup project in Visual Studio. Run the Tailwind watcher in Git Bash on Windows.
 
 **Server playground — Blazor Web App**
 
-\`\`\`sh
+```sh
 cd WindBlazor.Docs
 ./tailwindcsswatch.sh
-\`\`\`
+```
 
 In another terminal at the repository root:
 
-\`\`\`sh
+```sh
 dotnet run --project WindBlazor.Docs/WindBlazor.Docs.csproj
-\`\`\`
+```
 
-Both projects generate CSS from \`wwwroot/css/tailwind.css\`; the generated outputs are ignored by Git. The WebAssembly website is built for static hosting, while the server playground is not.
+Both projects generate CSS from `wwwroot/css/tailwind.css`; the generated outputs are ignored by Git. The WebAssembly website is built for static hosting, while the server playground is not.
 
 ## Documentation and deployment
 
-The [documentation website](https://rayeen13.github.io/WindBlazor/) includes a getting-started guide and live component examples. Its source is in [\`WindBlazor.Website\`](WindBlazor.Website).
+The [documentation website](https://rayeen13.github.io/WindBlazor/) includes a getting-started guide and live component examples. Its source is in [`WindBlazor.Website`](WindBlazor.Website).
 
-GitHub Actions compiles Tailwind CSS, publishes Blazor WebAssembly, and deploys to GitHub Pages on changes to \`master\`. A second workflow checks the Blazor solution. View their latest results from the badges above.
+GitHub Actions compiles Tailwind CSS, publishes Blazor WebAssembly, and deploys to GitHub Pages on changes to `master`. A second workflow checks the Blazor solution. View their latest results from the badges above.
 
 ## Contributing
 
@@ -178,7 +178,7 @@ Bug reports, examples, accessibility improvements, and focused PRs are welcome.
 1. Check [open issues](https://github.com/Rayeen13/WindBlazor/issues) before duplicating work.
 2. Create a branch for one focused change.
 3. Keep component APIs small, use the current .NET and Tailwind setup, and update matching demos/docs.
-4. Run \`dotnet build WindBlazor.sln\` and generate the relevant Tailwind CSS.
+4. Run `dotnet build WindBlazor.sln` and generate the relevant Tailwind CSS.
 5. Open a pull request explaining what changed and how it was tested.
 
 The project is intentionally incremental: **build one component well, validate it, then add the next.**
