@@ -1,0 +1,39 @@
+name: Docs build
+
+on:
+  pull_request:
+    paths:
+      - "WindBlazor.Docs/**"
+      - "WindBlazor/**"
+      - "WindBlazor.sln"
+      - ".github/workflows/docs-build.yml"
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Install standalone Tailwind CSS CLI
+        run: |
+          curl -fL --retry 3 https://github.com/tailwindlabs/tailwindcss/releases/download/v4.1.18/tailwindcss-linux-x64 -o tailwindcss
+          chmod +x tailwindcss
+          ./tailwindcss --version
+
+      - name: Generate Docs CSS
+        run: |
+          ./tailwindcss -i ./WindBlazor.Docs/wwwroot/css/tailwind.css -o ./WindBlazor.Docs/wwwroot/css/app.css --minify
+
+      - name: Build solution
+        run: dotnet build WindBlazor.sln --configuration Release

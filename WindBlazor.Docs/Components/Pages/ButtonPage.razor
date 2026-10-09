@@ -1,0 +1,30 @@
+@page "/button"
+@rendermode InteractiveServer
+
+<PageTitle>Button | WindBlazor</PageTitle>
+
+<div class="max-w-3xl">
+    <p class="text-sm font-semibold uppercase tracking-wider text-sky-700">Components</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight">Button</h1>
+    <p class="mt-3 text-slate-600">
+        These examples use the WindBlazor Button component directly, not a styled HTML substitute.
+    </p>
+
+    <section class="mt-8 rounded-xl border border-slate-200 bg-white p-6">
+        <h2 class="text-lg font-semibold">Default</h2>
+        <p class="mt-1 text-sm text-slate-500">Preview the library's current default Button.</p>
+        <div class="mt-4">
+            <Button>Save changes</Button>
+        </div>
+        <pre class="mt-5 overflow-x-auto rounded-lg bg-slate-950 p-4 text-sm text-slate-100"><code>&lt;Button&gt;Save changes&lt;/Button&gt;</code></pre>
+    </section>
+
+    <section class="mt-6 rounded-xl border border-slate-200 bg-white p-6">
+        <h2 class="text-lg font-semibold">Disabled</h2>
+        <p class="mt-1 text-sm text-slate-500">The native disabled attribute prevents clicks.</p>
+        <div class="mt-4">
+            <Button Disabled="true">Save unavailable</Button>
+        </div>
+        <pre class="mt-5 overflow-x-auto rounded-lg bg-slate-950 p-4 text-sm text-slate-100"><code>&lt;Button Disabled="true"&gt;Save unavailable&lt;/Button&gt;</code></pre>
+    </section>
+</div>
