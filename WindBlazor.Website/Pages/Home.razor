@@ -1,0 +1,37 @@
+@page "/"
+<PageTitle>WindBlazor — Blazor UI Kit</PageTitle>
+<HeadContent><meta name="description" content="Open-source Blazor components powered by Tailwind CSS v4. Real demos, code examples, and tutorials." /></HeadContent>
+
+<div class="grid items-center gap-12 py-8 lg:grid-cols-2 lg:py-16">
+    <div>
+        <p class="inline-flex rounded-full border border-cyan-500/30 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-cyan-300">Free • Open source • Early preview</p>
+        <h1 class="mt-7 text-5xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl">Blazor UI without <span class="bg-gradient-to-r from-cyan-300 to-sky-500 bg-clip-text text-transparent">the paywall.</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300">WindBlazor is a growing Tailwind CSS v4 component kit. Use real Razor components, start with useful defaults as they ship, and keep control of your styling.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+            <a href="getting-started" class="rounded-xl bg-cyan-400 px-6 py-3 font-bold text-slate-950 hover:bg-cyan-300">Get started →</a>
+            <a href="components/button" class="rounded-xl border border-white/20 px-6 py-3 font-semibold text-white hover:bg-white/10">Explore Button</a>
+        </div>
+        <p class="mt-5 text-sm text-slate-400">The current GitHub Button uses a <code>Class</code> parameter. The planned <code>Css</code> API is not published yet.</p>
+    </div>
+    <div class="overflow-hidden rounded-2xl border border-white/15 bg-[#111a2d] shadow-2xl shadow-black/40">
+        <div class="flex items-center gap-2 border-b border-white/10 px-5 py-4">
+            <span class="size-2.5 rounded-full bg-rose-400"></span><span class="size-2.5 rounded-full bg-amber-400"></span><span class="size-2.5 rounded-full bg-emerald-400"></span>
+            <span class="ml-3 text-xs text-slate-400">WindBlazor · Live preview</span>
+        </div>
+        <div class="p-7">
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Actual Blazor components</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+                <Button Class="rounded-lg bg-cyan-400 px-5 py-3 font-bold text-slate-950 hover:bg-cyan-300">Continue</Button>
+                <Button Class="rounded-lg border border-white/30 px-5 py-3 font-semibold text-white hover:bg-white/10">Cancel</Button>
+            </div>
+            <pre class="mt-7 overflow-x-auto rounded-xl bg-[#080d1b] p-5 text-sm leading-7 text-cyan-100"><code>&lt;Button Class="rounded-lg bg-cyan-400 px-5 py-3"&gt;
+    Continue
+&lt;/Button&gt;</code></pre>
+        </div>
+    </div>
+</div>
+<div class="grid gap-4 md:grid-cols-3">
+    <div class="rounded-xl border border-white/10 bg-white/5 p-6"><h2 class="font-bold">Blazor-native</h2><p class="mt-2 text-sm leading-6 text-slate-400">Component examples use the real WindBlazor project reference.</p></div>
+    <div class="rounded-xl border border-white/10 bg-white/5 p-6"><h2 class="font-bold">Tailwind v4</h2><p class="mt-2 text-sm leading-6 text-slate-400">CSS-first utilities with explicit source scanning.</p></div>
+    <div class="rounded-xl border border-white/10 bg-white/5 p-6"><h2 class="font-bold">Built in public</h2><p class="mt-2 text-sm leading-6 text-slate-400">Follow the roadmap, issues, and pull requests on GitHub.</p></div>
+</div>

@@ -1,0 +1,74 @@
+name: Website build and deploy
+
+on:
+  push:
+    branches: [master, feat/docs-static-website]
+    paths:
+      - "WindBlazor.Website/**"
+      - "WindBlazor/**"
+      - "WindBlazor.sln"
+      - ".github/workflows/website.yml"
+  pull_request:
+    paths:
+      - "WindBlazor.Website/**"
+      - "WindBlazor/**"
+      - "WindBlazor.sln"
+      - ".github/workflows/website.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - name: Install Tailwind CSS v4.1.18 CLI
+        run: |
+          curl -fL --retry 3 https://github.com/tailwindlabs/tailwindcss/releases/download/v4.1.18/tailwindcss-linux-x64 -o tailwindcss
+          chmod +x tailwindcss
+          ./tailwindcss --version
+      - name: Compile Tailwind CSS
+        run: ./tailwindcss -i ./WindBlazor.Website/wwwroot/css/tailwind.css -o ./WindBlazor.Website/wwwroot/css/site.css --minify
+      - name: Publish website
+        run: dotnet publish WindBlazor.Website/WindBlazor.Website.csproj -c Release -o "$RUNNER_TEMP/windblazor-site"
+      - name: Prepare Pages artifact
+        run: |
+          SITE="$RUNNER_TEMP/windblazor-site/wwwroot"
+          test -f "$SITE/index.html"
+          sed -i 's|<base href="/" />|<base href="/WindBlazor/" />|' "$SITE/index.html"
+          cp "$SITE/index.html" "$SITE/404.html"
+          touch "$SITE/.nojekyll"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windblazor-website-preview
+          path: ${{ runner.temp }}/windblazor-site/wwwroot
+          include-hidden-files: true
+          if-no-files-found: error
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: windblazor-website-preview
+          path: ./public
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+      - id: deployment
+        uses: actions/deploy-pages@v4
