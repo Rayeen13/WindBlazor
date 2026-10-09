@@ -51,6 +51,19 @@ Blazor developers have good choices already: mature component suites, copy-and-p
 
 The goal is simple: get the convenience of writing `<Button>` instead of rebuilding the same behavior everywhere, while keeping the ability to decide how that button looks.
 
+### The vision: Bootstrap-like ease, Tailwind-level freedom
+
+WindBlazor is meant to answer a practical frustration: **why should a Blazor developer have to choose between components that look finished and components they can style freely?**
+
+Once Tailwind is configured in the application, the **long-term target** is:
+
+- **Great defaults without repetitive styling:** write `<Button>Save</Button>` and get a thoughtfully styled control, not a bare browser button. This is the Bootstrap-like convenience we're aiming for.
+- **Real customization without fighting the library:** use a component-level Tailwind styling hook when the default isn't right. Your design shouldn't require forking the component.
+- **Consistent, reusable behavior:** shared component semantics, keyboard/focus behavior, disabled states, and accessible patterns, rather than copying markup and hoping every instance stays in sync.
+- **Free source, real examples:** learn from and contribute to the same Razor components demonstrated in the website, instead of buying a closed design bundle.
+
+**That is a roadmap, not a shipped feature list.** Today's public `<Button>` has no built-in visual defaults; you currently supply `Class` utilities yourself. The planned `Css`/base-style model still needs implementation and verification, especially for conflicting Tailwind utilities. **Placing one class name later in an HTML `class` attribute does not guarantee it overrides another.**
+
 ### What are the benefits?
 
 | Benefit | Why it matters |
