@@ -1,0 +1,33 @@
+@page "/components/button"
+<PageTitle>Button · WindBlazor</PageTitle>
+
+<div class="max-w-4xl">
+    <p class="text-sm font-bold uppercase tracking-wider text-cyan-300">Component 01</p>
+    <h1 class="mt-3 text-4xl font-bold">Button</h1>
+    <p class="mt-4 text-lg leading-8 text-slate-300">The examples below render <code>WindBlazor.Components.Button.Button</code> in your browser—not a mock component.</p>
+    <section class="mt-8 rounded-2xl border border-white/10 bg-[#111a2d] p-6">
+        <h2 class="text-xl font-bold">Styled Button</h2>
+        <p class="mt-2 text-sm text-slate-400">Pass Tailwind utilities with the current <code>Class</code> parameter.</p>
+        <div class="mt-5 flex flex-wrap items-center gap-4 rounded-xl border border-dashed border-white/15 bg-[#080d1b] p-6">
+            <Button Class="rounded-lg bg-cyan-400 px-5 py-3 font-bold text-slate-950 hover:bg-cyan-300" @onclick="HandleClick">Click me</Button>
+            <span class="text-sm text-cyan-300" role="status">@ClickMessage</span>
+        </div>
+        <pre class="mt-5 overflow-x-auto rounded-xl bg-[#080d1b] p-5 text-sm text-cyan-100"><code>&lt;Button Class="rounded-lg bg-cyan-400 px-5 py-3" @@onclick="HandleClick"&gt;
+    Click me
+&lt;/Button&gt;</code></pre>
+    </section>
+    <section class="mt-6 rounded-2xl border border-white/10 bg-[#111a2d] p-6">
+        <h2 class="text-xl font-bold">Disabled Button</h2>
+        <div class="mt-5 rounded-xl border border-dashed border-white/15 bg-[#080d1b] p-6">
+            <Button Class="rounded-lg bg-slate-500 px-5 py-3 text-white disabled:cursor-not-allowed disabled:opacity-50" Disabled="true">Unavailable</Button>
+        </div>
+        <pre class="mt-5 overflow-x-auto rounded-xl bg-[#080d1b] p-5 text-sm text-cyan-100"><code>&lt;Button Disabled="true"&gt;Unavailable&lt;/Button&gt;</code></pre>
+    </section>
+    <aside class="mt-6 rounded-xl border border-amber-300/20 bg-amber-300/5 p-5 text-sm leading-7 text-amber-100">
+        Defaults and the <code>Css</code> API are still in development locally. These docs reflect only code available in the GitHub repository.
+    </aside>
+</div>
+@code {
+    private string ClickMessage = "Ready to interact.";
+    private void HandleClick() => ClickMessage = "Click handled by Blazor!";
+}

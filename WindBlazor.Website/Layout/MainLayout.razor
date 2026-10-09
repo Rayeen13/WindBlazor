@@ -1,0 +1,25 @@
+@inherits LayoutComponentBase
+
+<div class="min-h-screen bg-[#080d1b] text-slate-100">
+    <header class="sticky top-0 z-20 border-b border-white/10 bg-[#080d1b]/95 backdrop-blur">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4">
+            <a href="" class="inline-flex items-center gap-3 text-lg font-bold tracking-tight">
+                <span class="grid size-9 place-items-center rounded-xl bg-cyan-400 font-black text-slate-950">W</span>
+                WindBlazor <span class="rounded-md border border-cyan-300/30 px-2 py-1 text-xs text-cyan-300">Preview</span>
+            </a>
+            <nav class="flex flex-wrap items-center gap-1 text-sm" aria-label="Site navigation">
+                <NavLink href="" Match="NavLinkMatch.All" class="rounded-lg px-3 py-2 text-slate-300 hover:bg-white/10 [&.active]:text-cyan-300">Overview</NavLink>
+                <NavLink href="getting-started" class="rounded-lg px-3 py-2 text-slate-300 hover:bg-white/10 [&.active]:text-cyan-300">Tutorial</NavLink>
+                <NavLink href="components/button" class="rounded-lg px-3 py-2 text-slate-300 hover:bg-white/10 [&.active]:text-cyan-300">Button</NavLink>
+                <a href="https://github.com/Rayeen13/WindBlazor" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-white/20 px-3 py-2 text-white hover:border-cyan-400">GitHub ↗</a>
+            </nav>
+        </div>
+    </header>
+    <main class="mx-auto max-w-6xl px-5 py-12">@Body</main>
+    <footer class="mt-12 border-t border-white/10">
+        <div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-5 py-6 text-sm text-slate-400">
+            <span>WindBlazor · Open-source Blazor UI components</span>
+            <span>Early preview · API subject to change</span>
+        </div>
+    </footer>
+</div>
